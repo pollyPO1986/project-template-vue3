@@ -1,0 +1,14 @@
+// flex
+@mixin flex-row($justify:center, $align:center, $wrap:nowrap, $display:flex) {
+  display: $display;
+  flex-wrap: $wrap;
+  justify-content: $justify; // X
+  align-items: $align; // Y
+}
+
+// grid
+@mixin grid-row($columns:repeat(3,1fr), $column-gap:30px, $row-gap:30px, $display:grid) {
+  display: $display;
+  grid-template-columns: $columns; // repeat(重覆次數,單位)
+  grid-gap: $row-gap $column-gap; // 左右間格 欄跟欄的上下間格
+}

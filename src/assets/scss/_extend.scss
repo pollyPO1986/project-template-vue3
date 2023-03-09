@@ -1,0 +1,28 @@
+// 置中
+%center-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// 英文字斷行設定
+%words {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+// Clearfix
+%clearfix {
+  *zoom: 1;
+
+  &::before,
+  &::after {
+    content: ' ';
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+  }
+}
