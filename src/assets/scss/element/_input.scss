@@ -1,0 +1,12 @@
+// input placeholder style
+input::placeholder {
+  color: $grey;
+  @include rem(font-size, 1.3rem);
+
+  opacity: 1;
+  transition: opacity 250ms ease-in-out;
+}
+
+:focus::placeholder {
+  opacity: 0.5;
+}

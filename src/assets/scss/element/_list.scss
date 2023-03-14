@@ -1,0 +1,33 @@
+// [class^='list_'],
+// [class*=' list_'] {
+//   @include reset-list();
+// }
+.list_inlineHasTitle {
+  li {
+    display: inline-block;
+  }
+}
+
+.list_blockHasTitle {
+  li {
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.list_inlineHasTitle,
+.list_blockHasTitle {
+  @include reset-list;
+
+  li {
+    &::before {
+      content: attr(data-title) '：';
+      display: inline-block;
+    }
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+// Use - @include rem(font-size, 1.6rem);
+// /* Fallback for IE8 */ > font-size: 16px;
+
+// Use - @include rem(padding, 20px 10px);
+// /* Fallback for IE8 */ > padding: 2rem 1rem;
+
+@use "sass:list";
+@use "sass:math";
+
+html {
+  font-size: 62.5%;
+}
+
+@function parse-int($n) {
+  @return $n / ($n * 0 + 1);
+}
+
+@mixin rem($property, $values) {
+  $px: ();
+  $rem: ();
+
+  @each $value in $values {
+
+    @if $value == 0 or $value == auto {
+      $px: list.append($px , $value);
+      $rem: list.append($rem, $value);
+    } @else {
+      $unit: math.unit($value);
+      $val: parse-int($value);
+
+      @if $unit == "px" {
+        $px: list.append($px, $value);
+        $rem: list.append($rem, ($val / 10 + rem));
+      }
+
+      @if $unit == "rem" {
+        $px: list.append($px, ($val * 10 + px));
+        $rem: list.append($rem, $value);
+      }
+    }
+  }
+
+  @if $px == $rem {
+    #{$property}: $px;
+  } @else {
+    #{$property}: $px;
+    #{$property}: $rem;
+  }
+}
